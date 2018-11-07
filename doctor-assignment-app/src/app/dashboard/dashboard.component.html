@@ -1,0 +1,40 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <h3>Doc'HUB</h3>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+
+  <input type="text" class="form-control" id="searchInput" placeholder="No time to develop...">
+
+  <table class="table table-striped">
+    <thead>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of allDoctorData; let i = index">
+        <td class="number">{{i+1}}</td>
+        <td>
+            <img class = "doctor_picture"[src]="(doctor.profile && doctor.profile.picture) ? doctor.profile.picture : 'assets/images/doctor.png'"
+            onError="this.src='assets/images/doctor.png'" alt="Not Found">
+        </td>
+        <td> 
+          <div *ngIf= "doctor.details">
+          <span >{{doctor.details.first_name}} &nbsp;</span>
+          <span>{{doctor.details.last_name}}</span>
+        </div>
+
+        </td>
+        <td><span class ="main_speciality" *ngIf= "doctor.main_speciality">{{doctor.main_speciality_name}}</span>
+          <span class ="speciality" *ngFor="let speciality of doctor.specialitiesName; let i = index" >{{speciality}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
